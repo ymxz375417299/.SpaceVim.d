@@ -1,0 +1,70 @@
+#=============================================================================
+# dark_powered.toml --- dark powered configuration example for SpaceVim
+# Copyright (c) 2016-2017 Wang Shidong & Contributors
+# Author: Wang Shidong < wsdjeg at 163.com >
+# URL: https://spacevim.org
+# License: GPLv3
+#=============================================================================
+
+# All SpaceVim option below [option] section
+[options]
+    # set spacevim theme. by default colorscheme layer is not loaded,
+    # if you want to use more colorscheme, please load the colorscheme
+    # layer
+    # onedark: 暗色主题字体绿色, grevbox：默认主题 molokai：以前终端的颜色 jellybeans: 背景颜色纯黑，字体绿色.但是图标不喜欢
+    # one:背景颜色纯黑，字体绿色，图标不错 # nord 纯黑字体神绿 背景图标白 #  hybrid 暗黑主题，图标白色 # material 不喜欢 # SpaceVim骚
+    colorscheme = "hybrid_reverse"
+    colorscheme_bg = "dark" # dark
+    # Disable guicolors in basic mode, many terminal do not support 24bit
+    # true colors
+    enable_guicolors = false
+    # Disable statusline separator, if you want to use other value, please
+    # install nerd fonts
+    statusline_separator = "arrow"
+    statusline_inactive_separator = "arrow"
+    buffer_index_type = 4
+    enable_tabline_filetype_icon = true
+    enable_statusline_mode = false
+    # 自定义配置函数
+    bootstrap_before = "myspacevim#before"
+    # bootstrap_after  = "myspacevim#after"
+    # 文件树插件可选值包括：
+    # - vimfiler （默认）
+    # - nerdtree
+    # - defx
+    filemanager = "nerdtree"
+
+
+# Enable autocomplete layer
+[[layers]]
+name = 'autocomplete'
+auto-completion-return-key-behavior = "complete"
+auto-completion-tab-key-behavior = "smart"
+
+[[layers]]
+name = 'shell'
+default_position = 'top'
+default_height = 30
+
+# 配置java模块
+[[layers]]
+name = "lang#java"
+
+# 主题插件
+[[layers]]
+name = "colorscheme"
+
+# 超级搜索
+[[layers]]
+name = "ctrlp"
+
+# 代码折叠 太卡了。注释了
+# [[custom_plugins]]
+# name = "tmhedberg/SimpylFold"
+# merged = false
+
+# 代码格式化
+[[layers]]
+name = "format"
+
+# 
