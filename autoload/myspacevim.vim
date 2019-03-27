@@ -32,14 +32,16 @@ function! myspacevim#before() abort
   nnoremap <C-H> <C-W><C-H>
 
 
-  "保存，并自动编辑java
+  "运行java的class文件
   nmap <leader>z :call CompileRunGcc()<CR>
   
+  nmap <leader>a :call Theend()<CR>
 
 endfunction
 
 function! CompileRunGcc()
   " 判断退出语句
+  " 执行W保存
   exec "w"
   " 从工作区跳转到当前目录
   exec "cd %:p:h" 
@@ -47,3 +49,10 @@ function! CompileRunGcc()
     exec "!javac %"
   endif
 endfunction
+
+function! Theend()
+  let count=expand('%:p')
+  echo count
+  :!ls
+endfunction
+
