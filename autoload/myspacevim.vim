@@ -35,7 +35,7 @@ function! myspacevim#before() abort
   "运行java的class文件
   nmap <leader>z :call CompileRunGcc()<CR>
   
-  nmap <leader>a :call Theend()<CR>
+  nmap <leader>a :call JavaC()<CR>
 
 endfunction
 
@@ -43,16 +43,29 @@ function! CompileRunGcc()
   " 判断退出语句
   " 执行W保存
   exec "w"
-  " 从工作区跳转到当前目录
-  exec "cd %:p:h" 
   if &filetype == 'java'
-    exec "!javac %"
+    call JavaC()
   endif
 endfunction
 
-function! Theend()
-  let count=expand('%:p')
-  echo count
-  :!ls
+function! JavaC()
+  let file_path=expand('%:p') "获取当前目录绝对路径
+  let path_list=split(file_path, '/src')
+  let list_len =  len(path_list)
+  if len(path_list) == 2
+    " 从工作区跳转到当前目录
+    exec "cd %:p:h"
+    let file_name= expand('%:t') "当前文件名
+    let path = path_list[0] . '/bin' . path_list[1]
+    exec "!javac -cp ../../lib:../../bin -Djava.ext.dirs=../../lib -d ../../bin " . file_name
+    echo 'bin编译成功: ' . path
+  else
+    " 从工作区跳转到当前目录
+    exec "cd %:p:h"
+    exec "!javac %"
+    echo "原地编译" . file_path
+  endif
+
+
 endfunction
 

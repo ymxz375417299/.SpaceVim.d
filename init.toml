@@ -33,6 +33,11 @@
     # - nerdtree
     # - defx
     filemanager = "nerdtree"
+    # 选择检测语法工具
+    enable_neomake = false # 这个检测语法，每次保存都会在文件目录生成编译文件夹，这点很烦人
+    enable_ale = true
+    lint_on_the_fly = true #启用实时语法检查
+    vim_help_language = "cn" # 设置中文文档插件，需要安装chinese插件
 
 
 # Enable autocomplete layer
@@ -57,6 +62,16 @@ name = "colorscheme"
 # 超级搜索
 [[layers]]
 name = "ctrlp"
+# 快捷键
+# <Leader> f <Space>  模糊查找快捷键，并执行该快捷键
+# <Leader> f e  模糊搜索寄存器
+# <Leader> f h  模糊搜索 history/yank
+# <Leader> f j  模糊搜索 jump, change
+# <Leader> f l  模糊搜索 location list
+# <Leader> f m  模糊搜索 output messages
+# <Leader> f o  模糊搜索函数列表
+# <Leader> f q  模糊搜索 quickfix list
+# <Leader> f r  重置上次搜索窗口
 
 # 代码折叠 太卡了。注释了
 # [[custom_plugins]]
@@ -67,4 +82,11 @@ name = "ctrlp"
 [[layers]]
 name = "format"
 
-# 
+# 语法检查模块
+[[layers]]
+name = "checkers"
+# show_cursor_error = false # 关闭光标的下一行显示当前行错误的详细信息
+
+# 中文帮助文档
+[[layers]]
+name = "chinese"
