@@ -9,14 +9,16 @@ function! myspacevim#before() abort
   inoremap kkk <Esc>`^
   inoremap lll <Esc>`^
   inoremap ooo <Esc>`^o
+  inoremap OOO <Esc>`^O
 
   "快速生成断点代码
   imap <leader>l <Esc>Oimport ipdb; ipdb.set_trace() # TODO BREAKPOINT<Esc>:w<cr>
   nmap <leader>l <Esc>Oimport ipdb; ipdb.set_trace() # TODO BREAKPOINT<Esc>:w<cr>
 
   " nerdtree 目录树
-  nmap ,v :NERDTreeFind<cr>
   nmap ,g :NERDTreeToggle<cr>
+  " 语法树映射快捷键leader + v
+  nnoremap <silent> <leazer>v :TagbarToggle<CR>  
 
   " neoformat 自动格式化 
   nmap ,p :Neoformat<cr>
@@ -32,10 +34,55 @@ function! myspacevim#before() abort
   nnoremap <C-H> <C-W><C-H>
 
 
-"java的class文件
-nmap <leader>z :call CompileRunGcc()<CR>
+  "java的class文件
+  nmap <leader>z :call CompileRunGcc()<CR>
+
+
+  "java代码缩进PEP8风格
+  " au BufNewFile,BufRead *.java,*.pyw set tabstop=4
+  " au BufNewFile,BufRead *.java,*.javaw set softtabstop=4
+  " au BufNewFile,BufRead *.java,*.javaw set shiftwidth=4
+  " au BufNewFile,BufRead *.java,*.javaw set textwidth=100 "每行代码最大长度
+  " au BufNewFile,BufRead *.java,*.javaw set expandtab
+  " au BufNewFile,BufRead *.java,*.javaw set autoindent
+  " au BufNewFile,BufRead *.java,*.javaw set fileformat=unix
+  
+  "python代码缩进PEP8风格
+  au BufNewFile,BufRead *.py,*.pyw set tabstop=4
+  au BufNewFile,BufRead *.py,*.pyw set softtabstop=4
+  au BufNewFile,BufRead *.py,*.pyw set shiftwidth=4
+  au BufNewFile,BufRead *.py,*.pyw set textwidth=100 "每行代码最大长度"
+  au BufNewFile,BufRead *.py,*.pyw set expandtab
+  au BufNewFile,BufRead *.py,*.pyw set autoindent
+  au BufNewFile,BufRead *.py,*.pyw set fileformat=unix
+  
+  ""对其他文件类型设置au命令
+  au BufNewFile,BufRead *.js, *.html, *.css set tabstop=2
+  au BufNewFile,BufRead *.js, *.html, *.css set softtabstop=2
+  au BufNewFile,BufRead *.js, *.html, *.css set shiftwidth=2
+
+  "高亮显示行伟不必要的空白字符
+  highlight Whitespace ctermbg=red guibg=red
+  au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match Whitespace /\s\+$\ \+/
+  
+  "java格式化astyle
+  let g:formatdef_my_cpp = '"astyle --style=google"'
+  let g:formatters_cpp = ['my_cpp']
+  let g:layer_lang_java_formatter = "/home/rock/.SpaceVim.d/path/to/google-java-format-1.7-all-deps.jar" # 重要，java格式化必须设置 为了使 format 模块支持 Java 文件
+  
 
 endfunction
+
+
+
+
+
+
+
+
+
+
+
 
 " 根据文件类型自动保存和编译
 function! CompileRunGcc()
@@ -47,6 +94,7 @@ function! CompileRunGcc()
   endif
 endfunction
 
+
 " 编译java文件到bin目录下
 function! JavaC()
   let file_path=expand('%:p') "获取当前目录绝对路径
@@ -54,10 +102,10 @@ function! JavaC()
   let list_len =  len(path_list)
   if len(path_list) == 2
     " 从工作区跳转到当前目录
-    exec "cd %:p:h"
-    let file_name= expand('%:t') "当前文件名
-    let path = path_list[0] . '/bin' . path_list[1]
-    exec "!javac -cp ../../lib:../../bin -Djava.ext.dirs=../../lib -d ../../bin " . file_name
+    echo "执行目录" . path_list[0] .'/src'
+    exec "cd " . path_list[0] . '/src'
+    let path = path_list[0] . '/bin' . path_list[1][1:]
+    exec "!javac -cp ../lib:../bin -Djava.ext.dirs=../lib -d ../bin -sourcepath ../src " . path_list[1][1:]
     echo 'bin编译成功: ' . path
   else
     " 从工作区跳转到当前目录
@@ -65,7 +113,5 @@ function! JavaC()
     exec "!javac %"
     echo "原地编译" . file_path
   endif
-
-
 endfunction
 

@@ -33,11 +33,14 @@
     # - nerdtree
     # - defx
     filemanager = "nerdtree"
+
     # 选择检测语法工具
     enable_neomake = false # 这个检测语法，每次保存都会在文件目录生成编译文件夹，这点很烦人
     enable_ale = true
-    lint_on_the_fly = true #启用实时语法检查
+    lint_on_the_fly = false #启用实时语法检查
     vim_help_language = "cn" # 设置中文文档插件，需要安装chinese插件
+    layer_lang_java_formatter = "~/.SpaceVim.d/path/to/google-java-format-1.7-all-deps.jar" # 重要，java格式化必须设置 为了使 format 模块支持 Java 文件
+    
 
 
 # Enable autocomplete layer
@@ -83,10 +86,14 @@ name = "ctrlp"
 name = "format"
 
 # 语法检查模块
-[[layers]]
-name = "checkers"
+# [[layers]]
+# name = "checkers"
 # show_cursor_error = false # 关闭光标的下一行显示当前行错误的详细信息
 
 # 中文帮助文档
 [[layers]]
 name = "chinese"
+
+# 模糊搜索快速调到当前文件中的某个函数
+[[layers]]
+name = "denite"

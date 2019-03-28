@@ -189,6 +189,7 @@ jjava(){
     # old=$old/$var
   # done
   echo java运行命令 java -cp $addr/bin -Djava.ext.dirs=../../lib $args
+  echo -------------------------
   java -cp $addr/bin -Djava.ext.dirs=../../lib $args
 }
 
@@ -200,6 +201,7 @@ source ~/.oh-my-zsh/plugins/incr/incr*.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source /usr/local/bin/virtualenvwrapper.sh
 
+# java环境变量
 JAVA_HOME=/usr/local/java/jdk1.8.0_201
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar 
-export PATH=$PATH:$JAVA_HOME/bin   
+export PATH=$PATH:$JAVA_HOME/bin
