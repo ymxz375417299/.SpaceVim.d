@@ -2,12 +2,17 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-# 当前路径
+# 记录上一次路径
+LAST_PWD=`pwd`
+# 回到桌面路径
 cd
+# 获取桌面路径
 CURRENT_F=`pwd`
 export ZSH=$CURRENT_F"/.oh-my-zsh"
 echo $ZSH
 export TERM="xterm-256color" 
+# 回到上一次路径
+cd $LAST_PWD
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -167,23 +172,24 @@ jtouch(){
 
 }
 
-# 自动运行src文件的class文件
+# 自动运行bin文件的class文件
 jjava(){
   addr=`pwd`
-  # 去掉bin或src后的真实地址
+  # 截取bin或sr前地址
   addr=${addr%/src*} # #表示操作符，*bin表示从左网右找到第一个bin值，截取之前的所有字符，如果要截取之后则##*bin
   addr=${addr%/bin*} # #表示操作符，*bin表示从左网右找到第一个bin值，截取之前的所有字符，如果要截取之后则##*bin
-  string=$1
+  args=$1 # 用户输入的第一个参数
   # 分割
-  array=(`echo $string | tr '.' ' '` )
-  array=(`echo $array | tr ',' ' '` )
-  array=(`echo $array | tr '/' ' '` )
-  old=''
-  for var in ${array[@]}
-  do
-    old=$old/$var
-  done
-  java $addr/bin$old
+  # array=(`echo $args | tr '.' ' '` )
+  # array=(`echo $array | tr ',' ' '` )
+  # array=(`echo $array | tr '/' ' '` )
+  # old=''
+  # for var in ${array[@]}
+  # do
+    # old=$old/$var
+  # done
+  echo java运行命令 java -cp $addr/bin -Djava.ext.dirs=../../lib $args
+  java -cp $addr/bin -Djava.ext.dirs=../../lib $args
 }
 
 
