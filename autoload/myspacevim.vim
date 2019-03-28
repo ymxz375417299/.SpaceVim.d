@@ -32,13 +32,12 @@ function! myspacevim#before() abort
   nnoremap <C-H> <C-W><C-H>
 
 
-  "运行java的class文件
-  nmap <leader>z :call CompileRunGcc()<CR>
-  
-  nmap <leader>a :call JavaC()<CR>
+"java的class文件
+nmap <leader>z :call CompileRunGcc()<CR>
 
 endfunction
 
+" 根据文件类型自动保存和编译
 function! CompileRunGcc()
   " 判断退出语句
   " 执行W保存
@@ -48,6 +47,7 @@ function! CompileRunGcc()
   endif
 endfunction
 
+" 编译java文件到bin目录下
 function! JavaC()
   let file_path=expand('%:p') "获取当前目录绝对路径
   let path_list=split(file_path, '/src')
