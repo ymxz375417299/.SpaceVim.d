@@ -118,11 +118,17 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias java快捷键 创建项目
-alias mkjava='mkjava() { 
-  mkdir $1; cd $1;
-  mkdir bin src; cd ..;
-};mkjava' 
+
+
+
+
+# 创建java项目
+sjava() { 
+  mkdir $1
+  cd $1
+  mkdir bin src
+  cd ..
+} 
 
 
 # 快速创建java包

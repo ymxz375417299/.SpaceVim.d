@@ -72,6 +72,10 @@ function! myspacevim#before() abort
   " 添加模板路径
   let g:JavaComplete_CustomTemplateDirectory = '~/jc_templates'
   
+  "设置分割窗口 默认打开底部或者右边
+  set splitbelow
+  set splitright
+  
 
 endfunction
 
