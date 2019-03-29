@@ -65,10 +65,12 @@ function! myspacevim#before() abort
   highlight Whitespace ctermbg=red guibg=red
   au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match Whitespace /\s\+$\ \+/
   
-  "java格式化astyle
-  let g:formatdef_my_cpp = '"astyle --style=google"'
-  let g:formatters_cpp = ['my_cpp']
-  let g:layer_lang_java_formatter = "/home/rock/.SpaceVim.d/path/to/google-java-format-1.7-all-deps.jar" # 重要，java格式化必须设置 为了使 format 模块支持 Java 文件
+
+  "Java补全插件JavaComplete2
+  let g:JavaComplete_EnableDefaultMappings = 1
+
+  " 添加模板路径
+  let g:JavaComplete_CustomTemplateDirectory = '~/jc_templates'
   
 
 endfunction

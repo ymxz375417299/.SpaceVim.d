@@ -203,5 +203,5 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # java环境变量
 JAVA_HOME=/usr/local/java/jdk1.8.0_201
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar 
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:../../bin:../../src
 export PATH=$PATH:$JAVA_HOME/bin
