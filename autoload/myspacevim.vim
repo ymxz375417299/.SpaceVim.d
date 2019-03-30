@@ -18,7 +18,7 @@ function! myspacevim#before() abort
   " nerdtree 目录树
   nmap ,g :NERDTreeToggle<cr>
   " 语法树映射快捷键leader + v
-  nnoremap <silent> <leazer>v :TagbarToggle<CR>  
+  nnoremap <silent> <leader>v :TagbarToggle<CR>  
 
   " neoformat 自动格式化 
   nmap ,p :Neoformat<cr>
@@ -75,10 +75,11 @@ function! myspacevim#before() abort
   "设置分割窗口 默认打开底部或者右边
   set splitbelow
   set splitright
+  " CtrlP 忽略文件
+  let g:loaded_ctrlp = 0
   
 
 endfunction
-
 
 
 
@@ -111,6 +112,7 @@ function! JavaC()
     echo "执行目录" . path_list[0] .'/src'
     exec "cd " . path_list[0] . '/src'
     let path = path_list[0] . '/bin' . path_list[1][1:]
+    exec "!mkdir ../bin"
     exec "!javac -cp ../lib:../bin -Djava.ext.dirs=../lib -d ../bin -sourcepath ../src " . path_list[1][1:]
     echo 'bin编译成功: ' . path
   else
