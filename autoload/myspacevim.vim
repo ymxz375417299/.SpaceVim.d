@@ -17,8 +17,7 @@ function! myspacevim#before() abort
 
   " nerdtree 目录树
   nmap ,g :NERDTreeToggle<cr>
-  " 语法树映射快捷键leader + v
-  nnoremap <silent> <leader>v :TagbarToggle<CR>  
+
 
   " neoformat 自动格式化 
   nmap ,p :Neoformat<cr>
@@ -78,12 +77,21 @@ function! myspacevim#before() abort
   " CtrlP 忽略文件
   let g:loaded_ctrlp = 0
   
-
+  " 语法树映射快捷键leader + v
+  nnoremap <silent> <leader>v :call TagbarOpen()<CR>
+  " autocmd VimEnter * nested :TagbarOpen
+  " autocmd VimEnter * nested :call tagbar#autoopen(1)
+  " autocmd FileType * nested :call tagbar#autoopen(1)
+  " autocmd FileType c,cpp nested :TagbarOpen
+   autocmd BufEnter * nested :call tagbar#autoopen(0)
 endfunction
 
 
 
-
+function! TagbarOpen()
+  exec "w"
+  exec "TagbarToggle"
+endfunction
 
 
 
