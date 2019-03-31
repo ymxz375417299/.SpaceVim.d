@@ -79,17 +79,16 @@ function! myspacevim#before() abort
   
   " 语法树映射快捷键leader + v
   nnoremap <silent> <leader>v :call TagbarOpen()<CR>
-  " autocmd VimEnter * nested :TagbarOpen
+  autocmd VimEnter * nested :TagbarOpen
   " autocmd VimEnter * nested :call tagbar#autoopen(1)
   " autocmd FileType * nested :call tagbar#autoopen(1)
   " autocmd FileType c,cpp nested :TagbarOpen
-   autocmd BufEnter * nested :call tagbar#autoopen(0)
+   " autocmd BufEnter * nested :call tagbar#autoopen(0)
 endfunction
 
 
 
 function! TagbarOpen()
-  exec "w"
   exec "TagbarToggle"
 endfunction
 
