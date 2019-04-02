@@ -46,8 +46,8 @@
 # Enable autocomplete layer
 [[layers]]
 name = 'autocomplete'
-auto-completion-return-key-behavior = "complete"
-auto-completion-tab-key-behavior = "smart"
+# auto-completion-return-key-behavior = "complete"
+# auto-completion-tab-key-behavior = "smart"
 
 [[layers]]
 name = 'shell'
@@ -97,3 +97,30 @@ name = "format"
 # 模糊搜索快速调到当前文件中的某个函数
 [[layers]]
 name = "denite"
+
+
+# 语言服务器模块
+[[layers]]
+name = "lsp"
+filetypes = [
+  "java"
+]
+
+[layers.override_cmd]
+java = [
+   "java",
+   "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+   "-Dosgi.bundles.defaultStartLevel=4",
+   "-Declipse.product=org.eclipse.jdt.ls.core.product",
+   "-Dlog.protocol=true",
+   "-Dlog.level=NONE",
+   "-noverify",
+   "-Xmx1G",
+   "-jar",
+# "//dev//.SpaceVim.d//jdt-language-server-latest//plugins//org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar",
+   "~/.SpaceVim.d/jdt-language-server-latest/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar",
+   "-configuration",
+   "~/.SpaceVim.d/jdt-language-server-latest/config_linux",
+   "-data",
+   "~/.cache/javalsp",
+   ]

@@ -77,6 +77,7 @@ function! myspacevim#before() abort
   " CtrlP 忽略文件
   let g:loaded_ctrlp = 0
   
+  nmap <leader>a :call Abc()<CR>
   " 语法树映射快捷键leader + v
   nnoremap <silent> <leader>v :call TagbarOpen()<CR>
   autocmd VimEnter * nested :TagbarOpen
@@ -84,6 +85,9 @@ function! myspacevim#before() abort
   " autocmd FileType * nested :call tagbar#autoopen(1)
   " autocmd FileType c,cpp nested :TagbarOpen
    " autocmd BufEnter * nested :call tagbar#autoopen(0)
+
+
+
 endfunction
 
 
@@ -92,6 +96,12 @@ function! TagbarOpen()
   exec "TagbarToggle"
 endfunction
 
+
+function! Abc()
+  let addr=expand('%:p') " 获取当前完整路径
+  let abc=input("请输入jtouch")
+  exec "jtouch abc/abc.java"
+endfunction
 
 
 

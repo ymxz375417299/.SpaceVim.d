@@ -1,0 +1,42 @@
+!SESSION 2019-04-02 15:26:50.152 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_201
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/rock/.SpaceVim.d/.cache/javalsp
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:26:56.618
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:26:56.869
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:26:56.894
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:26:56.896
+!MESSAGE Initializing Java Language Server 0.36.1.201904020132
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:26:57.015
+!MESSAGE Creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:26:57.609
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:26:58.805
+!MESSAGE Finished creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:27:01.359
+!MESSAGE Importing Eclipse project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:27:01.384
+!MESSAGE Workspace initialized in 4484ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:27:01.416
+!MESSAGE >> document/didOpen
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:27:01.449
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2019-04-02 15:27:11.870
+!MESSAGE >> document/didChange
