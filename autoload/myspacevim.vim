@@ -84,9 +84,11 @@ function! myspacevim#before() abort
   " autocmd VimEnter * nested :call tagbar#autoopen(1)
   " autocmd FileType * nested :call tagbar#autoopen(1)
   " autocmd FileType c,cpp nested :TagbarOpen
-   " autocmd BufEnter * nested :call tagbar#autoopen(0)
+  " autocmd BufEnter * nested :call tagbar#autoopen(0)
 
 
+  " 关闭鼠标模式
+  set mouse=
 
 endfunction
 
