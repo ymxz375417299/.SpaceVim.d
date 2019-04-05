@@ -12,8 +12,8 @@ function! myspacevim#before() abort
   inoremap OOO <Esc>`^O
 
   "快速生成断点代码
-  imap <leader>l <Esc>Oimport ipdb; ipdb.set_trace() # TODO BREAKPOINT<Esc>:w<cr>
-  nmap <leader>l <Esc>Oimport ipdb; ipdb.set_trace() # TODO BREAKPOINT<Esc>:w<cr>
+  " imap <leader>l <Esc>Oimport ipdb; ipdb.set_trace() # TODO BREAKPOINT<Esc>:w<cr>
+  " nmap <leader>l <Esc>Oimport ipdb; ipdb.set_trace() # TODO BREAKPOINT<Esc>:w<cr>
 
   " nerdtree 目录树
   nmap ,g :NERDTreeToggle<cr>
