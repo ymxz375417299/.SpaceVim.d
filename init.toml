@@ -33,6 +33,7 @@
     # - nerdtree
     # - defx
     filemanager = "nerdtree"
+    enable_vimfiler_gitstatus = true # 默认打开？kk
 
     # 选择检测语法工具
     enable_neomake = false # 这个检测语法，每次保存都会在文件目录生成编译文件夹，这点很烦人
