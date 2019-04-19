@@ -161,17 +161,31 @@ jtouch(){
   for var in ${array[@]}
   do
     old=$old/$var #拼接完成绝对路径
-    echo 创建路径: $addr/src/${old:1}
-    mkdir $addr/src/${old:1}
-    mkdir $addr/bin/${old:1}
+    # 判断是否存在，不存在才创建
+    if [ ! -d $addr/src/${old:1} ];then
+      echo 创建路径: $addr/src/${old:1}
+      mkdir $addr/src/${old:1}
+      echo 创建成功!
+    fi
+
+    if [ ! -d $addr/bin/${old:1} ];then
+      mkdir $addr/bin/${old:1}
+      echo 创建成功！
+    fi
   done
 
   # 判断javaName是否包含java关键字，如果是则创建
   if [[ $javaName == *$javaKey* ]]
   then
-    echo 创建java文件：$javaName
-    touch $addr/src/${old:1}/$javaName
-    echo '成功创建Java文件'
+    # 判断java文件是否存在，不存在才创建
+    if [ ! -f $addr/src/${old:1}/$javaName ];then
+      echo "创建Java demo。。"
+      echo Java：$javaName
+      touch $addr/src/${old:1}/$javaName
+      echo '成功创建Java文件'
+    else
+      echo Java文件已存在，不创建！
+    fi
   else
     echo 'java包已创建完毕！'
   fi
