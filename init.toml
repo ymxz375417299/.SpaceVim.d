@@ -125,3 +125,7 @@ java = [
    "-data",
    "~/.cache/javalsp",
    ]
+
+# JavaScript 补全
+[[layers]]
+name = "lang#javascript"
