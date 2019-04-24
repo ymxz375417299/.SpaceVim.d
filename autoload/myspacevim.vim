@@ -69,9 +69,12 @@ function! myspacevim#before() abort
   let g:JavaComplete_EnableDefaultMappings = 1
   " 添加模板路径
   let g:JavaComplete_CustomTemplateDirectory = '~/jc_templates'
-  let g:JavaComplete_SourcesPath='/home/rock/java_lesson/JavaWeb/04.XML/libs/jsoup-1.11.2'
-  " let g:JavaComplete_LibsPath='..//libs/jsoup-1.11.2'
-  let g:JavaComplete_PomPath ="/home/rock/java_lesson/JavaWeb/04.XML/pom.xml"
+  " let g:JavaComplete_SourcesPath='/home/rock/java_lesson/JavaWeb/04.XML/libs/jsoup-1.11.2'
+  " let g:JavaComplete_LibsPath='/home/ipfsmain/java_lesson/JavaWeb/04.XML/libs/jsoup-1.11.2'
+  " let g:JavaComplete_LibsPath .=':/home/ipfsmain/java_lesson/JavaWeb/04.XML/libs/jsoup-1.11.3'
+  " 导入在libs目录第三方Jar包
+  nmap <leader>i :call ImportJar()<CR>
+  " let g:JavaComplete_PomPath ="/home/rock/java_lesson/JavaWeb/04.XML/pom.xml"
   
   
   "设置分割窗口 默认打开底部或者右边
@@ -95,6 +98,30 @@ function! myspacevim#before() abort
 
 endfunction
 
+" 导入第三方libs目录第三方Jar包
+function! ImportJar()
+  if &filetype == 'java'
+    let file_path=expand('%:p') "获取当前目录绝对路径
+    let path_list=split(file_path, '/src')
+    echo path_list
+
+    if len(path_list) == 2
+      " 从工作区跳转到当前目录
+      echo "执行目录" . path_list[0] .'/libs'
+      exec 'cd ' . path_list[0] . '/libs'
+      " 获取当前目录的所有文件列表
+      let abc = split(globpath('.', '*[^jar]'), '\n')
+      for i in abc
+        echo path_list[0] . '/libs' . '/' . split(i, './')[0]
+        let g:JavaComplete_LibsPath .= ':' . path_list[0] . '/libs' . '/' . split(i, './')[0]
+        "let g:JavaComplete_SourcesPath=
+      endfor
+      exec 'JCserverTerminate'
+      exec 'JCserverStart'
+      echo '重启成功'
+    endif
+  endif
+endfunction
 
 
 function! TagbarOpen()
