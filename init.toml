@@ -101,30 +101,29 @@ name = "denite"
 
 
 # 语言服务器模块
-[[layers]]
-name = "lsp"
-filetypes = [
-  "java"
-]
-
-[layers.override_cmd]
-java = [
-   "java",
-   "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-   "-Dosgi.bundles.defaultStartLevel=4",
-   "-Declipse.product=org.eclipse.jdt.ls.core.product",
-   "-Dlog.protocol=true",
-   "-Dlog.level=NONE",
-   "-noverify",
-   "-Xmx1G",
-   "-jar",
-# "//dev//.SpaceVim.d//jdt-language-server-latest//plugins//org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar",
-   "~/.SpaceVim.d/jdt-language-server-latest/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar",
-   "-configuration",
-   "~/.SpaceVim.d/jdt-language-server-latest/config_linux",
-   "-data",
-   "~/.cache/javalsp",
-   ]
+# [[layers]]
+# name = "lsp"
+# filetypes = [
+  # "java"
+# ]
+#
+# [layers.override_cmd]
+# java = [
+   # "java",
+   # "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+   # "-Dosgi.bundles.defaultStartLevel=4",
+   # "-Declipse.product=org.eclipse.jdt.ls.core.product",
+   # "-Dlog.protocol=true",
+   # "-Dlog.level=NONE",
+   # "-noverify",
+   # "-Xmx1G",
+   # "-jar",
+   # "~/.SpaceVim.d/jdt-language-server-latest/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar",
+   # "-configuration",
+   # "~/.SpaceVim.d/jdt-language-server-latest/config_linux",
+   # "-data",
+   # "~/.cache/javalsp",
+   # ]
 
 # JavaScript 补全
 [[layers]]

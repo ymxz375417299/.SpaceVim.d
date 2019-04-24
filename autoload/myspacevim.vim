@@ -67,9 +67,12 @@ function! myspacevim#before() abort
 
   "Java补全插件JavaComplete2
   let g:JavaComplete_EnableDefaultMappings = 1
-
   " 添加模板路径
   let g:JavaComplete_CustomTemplateDirectory = '~/jc_templates'
+  let g:JavaComplete_SourcesPath='/home/rock/java_lesson/JavaWeb/04.XML/libs/jsoup-1.11.2'
+  " let g:JavaComplete_LibsPath='..//libs/jsoup-1.11.2'
+  let g:JavaComplete_PomPath ="/home/rock/java_lesson/JavaWeb/04.XML/pom.xml"
+  
   
   "设置分割窗口 默认打开底部或者右边
   set splitbelow
@@ -132,7 +135,7 @@ function! JavaC()
     exec "cd " . path_list[0] . '/src'
     let path = path_list[0] . '/bin' . path_list[1][1:]
     exec "!mkdir ../bin"
-    exec "!javac -cp ../lib:../bin -Djava.ext.dirs=../lib -d ../bin -sourcepath ../src " . path_list[1][1:]
+    exec "!javac -cp ../lib:../libs:../bin -Djava.ext.dirs=../lib -d ../bin -sourcepath ../src -classpath ../libs/* " . path_list[1][1:]
     echo 'bin编译成功: ' . path
   else
     " 从工作区跳转到当前目录
