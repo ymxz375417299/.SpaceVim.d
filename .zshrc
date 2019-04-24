@@ -208,9 +208,9 @@ jjava(){
   # do
     # old=$old/$var
   # done
-  echo java运行命令 java -cp $addr/bin -Djava.ext.dirs=../../lib $args
+  echo java运行命令 java -cp $addr/bin -Djava.ext.dirs=../libs $args
   echo -------------------------
-  java -cp $addr/bin -Djava.ext.dirs=../../lib $args
+  java -cp $addr/bin -Djava.ext.dirs=../libs $args
 }
 
 
@@ -223,5 +223,5 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # java环境变量
 JAVA_HOME=/usr/local/java/jdk1.8.0_201
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:../../bin:../../src
-export PATH=$PATH:$JAVA_HOME/bin
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:../../bin:../../src:../../libs/jsoup-1.11.2/
+export PATH=$PATH:$JAVA_HOME/bin:../../libs/jsoup-1.11.2/
